@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from backend.models.task import Task
-from backend.schemas.task import TaskCreate, TaskUpdate
+from models.task import Task
+from schemas.task import TaskCreate, TaskUpdate
 
 
 def get_tasks(db: Session, user_id: str):

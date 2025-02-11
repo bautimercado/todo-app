@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from sqlalchemy.orm import relationship
-from backend.config.database import Base
+from config.database import Base
 
 class Task(Base):
     __tablename__ = "tasks"

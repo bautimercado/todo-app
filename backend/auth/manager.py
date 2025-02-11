@@ -1,6 +1,6 @@
 from fastapi_users import BaseUserManager, UUIDIDMixin
-from backend.config.database import get_user_db
-from backend.models.user import User
+from config.database import get_user_db
+from models.user import User
 import os
 from dotenv import load_dotenv
 

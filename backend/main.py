@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from backend.auth.users import router as auth_router, user_router
-from backend.routers.task import router as task_router
-from backend.config.database import Base, engine
+from auth.users import router as auth_router
+from routers.task import router as task_router
+from config.database import Base, engine
 
 
 Base.metadata.create_all(bind=engine)
@@ -22,7 +22,6 @@ app.add_middleware(
 )
 
 app.include_router(auth_router)
-app.include_router(user_router)
 app.include_router(task_router, prefix="/tasks", tags=["tasks"])
 
 @app.get("/")

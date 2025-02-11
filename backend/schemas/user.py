@@ -2,7 +2,7 @@ from typing import List
 
 from fastapi_users.schemas import BaseUser, BaseUserCreate, BaseUserUpdate
 
-from backend.schemas.task import TaskResponse
+from schemas.task import TaskResponse
 
 class UserBase(BaseUser):
     pass
