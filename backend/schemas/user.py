@@ -1,14 +1,16 @@
 from typing import List
 
-from pydantic import BaseModel
+from fastapi_users.schemas import BaseUser, BaseUserCreate, BaseUserUpdate
 
 from backend.schemas.task import TaskResponse
 
-class UserBase(BaseModel):
-    username: str
-    email: str
+class UserBase(BaseUser):
+    pass
 
-class UserCreate(UserBase):
+class UserCreate(BaseUserCreate):
+    pass
+
+class UserUpdate(BaseUserUpdate):
     pass
 
 class UserResponse(UserBase):
