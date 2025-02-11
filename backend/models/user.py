@@ -4,7 +4,9 @@ from sqlalchemy.orm import relationship
 from config.database import Base
 
 class User(SQLAlchemyBaseUserTableUUID, Base):
-    id = Column(Integer, primary_key=True, index=True)
+    __tablename__ = "users"
+
+    username = Column(String, unique=True, nullable=False)
     is_active = Column(Boolean, default=True)
 
     tasks = relationship("Task", back_populates="owner")
