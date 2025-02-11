@@ -1,4 +1,4 @@
-from typing import Optional, List
+from typing import List
 
 from pydantic import BaseModel
 
@@ -12,9 +12,9 @@ class UserCreate(UserBase):
     pass
 
 class UserResponse(UserBase):
-    id: int
+    id: str
     is_active: bool
     tasks: List[TaskResponse] = []
 
     class Config:
-        orm_mode = True
+        from_attributes = True

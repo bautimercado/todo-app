@@ -11,9 +11,12 @@ class TaskBase(BaseModel):
 class TaskCreate(TaskBase):
     pass
 
+class TaskUpdate(TaskBase):
+    pass
+
 class TaskResponse(TaskBase):
     id: int
-    owner_id: int
+    owner_id: str
 
     class Config:
-        orm_mode = True
+        from_attributes = True
