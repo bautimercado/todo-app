@@ -1,21 +1,22 @@
+import uuid
+
 from typing import List
-
+from pydantic import EmailStr
 from fastapi_users.schemas import BaseUser, BaseUserCreate, BaseUserUpdate
-
 from schemas.task import TaskResponse
 
-class UserBase(BaseUser):
-    pass
+class UserBase(BaseUser[uuid.UUID]):
+    username: EmailStr
 
 class UserCreate(BaseUserCreate):
-    pass
+    username: EmailStr
+    password: str
 
 class UserUpdate(BaseUserUpdate):
-    pass
+    username: EmailStr
+    password: str
 
 class UserResponse(UserBase):
-    id: str
-    is_active: bool
     tasks: List[TaskResponse] = []
 
     class Config:

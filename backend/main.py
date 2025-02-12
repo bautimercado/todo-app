@@ -1,17 +1,25 @@
+from contextlib import asynccontextmanager
+
+from auth.users import router as auth_router
+from config.database import create_db_and_tables
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from auth.users import router as auth_router
 from routers.task import router as task_router
-from config.database import Base, engine
 
 
-Base.metadata.create_all(bind=engine)
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    await create_db_and_tables()
+    yield
+
 
 app = FastAPI(
     title="Todo API",
     description="API para una aplicación de gestión de tareas",
-    version="1.0.0"
+    version="1.0.0",
+    lifespan=lifespan
 )
+
 
 app.add_middleware(
     CORSMiddleware,
